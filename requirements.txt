@@ -10,3 +10,4 @@ faiss-cpu
 sentence-transformers
 
 google-generativeai
+protobuf==5.29.6
