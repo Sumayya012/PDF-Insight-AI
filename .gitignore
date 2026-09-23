@@ -1,0 +1,66 @@
+# ============================================================
+# PDF Insight AI - Git Ignore
+# ============================================================
+
+# -------------------- Environment & Secrets --------------------
+.env
+.env.*
+!.env.example
+
+# -------------------- Python --------------------
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# -------------------- Jupyter / Python Tools --------------------
+.ipynb_checkpoints/
+
+# -------------------- Streamlit --------------------
+.streamlit/secrets.toml
+
+# -------------------- FAISS Generated Data --------------------
+faiss_index/
+
+# -------------------- Logs & Temporary Files --------------------
+*.log
+*.tmp
+*.temp
+
+# -------------------- OS Files --------------------
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# -------------------- VS Code --------------------
+.vscode/
+
+# -------------------- IDE / Workspace Files --------------------
+*.code-workspace
+
+# -------------------- Test / Coverage --------------------
+.pytest_cache/
+.coverage
+htmlcov/
+.coverage.*
+coverage.xml
+
+# -------------------- Build / Distribution --------------------
+build/
+dist/
+*.egg-info/
+
+# -------------------- Backup Files --------------------
+*.bak
+*.swp
+*.swo
+*~
+
+# -------------------- Local Test PDFs --------------------
+# Uncomment if you don't want test PDFs tracked by Git
+# *.pdf
