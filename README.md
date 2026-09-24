@@ -1,12 +1,20 @@
-# PDF Insight AI 📚🤖
+# 📄 PDF Insight AI
 
 > An AI-powered PDF question-answering application built with Streamlit, LangChain, FAISS, local sentence-transformer embeddings, and Google Gemini.
 
+[![Live Demo](https://img.shields.io/badge/LIVE%20DEMO-PDF%20INSIGHT%20AI-6366F1?style=for-the-badge)](https://pdfinsightapp.streamlit.app)
+[![GitHub](https://img.shields.io/badge/-GITHUB-555555?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Sumayya012/PDF-Insight-AI)
+[![Sumayya012](https://img.shields.io/badge/-SUMAYYA012-000000?style=for-the-badge)](https://github.com/Sumayya012)
+
+---
+
 ## 🚀 Live Demo
 
-**Streamlit App:** https://pdfinsightapp.streamlit.app
+Try the deployed application directly in your browser:
 
-**GitHub Repository:** https://github.com/Sumayya012/PDF-Insight-AI
+👉 https://pdfinsightapp.streamlit.app
+
+No local installation is required to try the live application.
 
 ---
 
