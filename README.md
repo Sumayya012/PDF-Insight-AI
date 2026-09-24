@@ -8,6 +8,26 @@
 
 ---
 
+## 📑 Table of Contents
+
+- [Live Demo](#-live-demo)
+- [Overview](#-overview)
+- [Key Features](#-key-features)
+- [Technology Stack](#️-technology-stack)
+- [Architecture](#️-architecture)
+- [RAG Pipeline](#-rag-pipeline)
+- [Project Structure](#-project-structure)
+- [Getting Started](#️-getting-started)
+- [How to Use](#-how-to-use)
+- [Deployment](#️-deployment)
+- [Privacy & API Usage](#-privacy--api-usage)
+- [Limitations](#️-limitations)
+- [Future Improvements](#-future-improvements)
+- [License](#-license)
+- [Author](#-author)
+
+---
+
 ## 🚀 Live Demo
 
 Try the deployed application directly in your browser:
@@ -49,53 +69,80 @@ Instead of sending the entire document directly to the language model, the appli
 
 ---
 
-## 🏗️ Application Workflow
+## 🛠️ Technology Stack
+
+| Technology | Purpose |
+|---|---|
+| Python | Application development |
+| Streamlit | Web application interface |
+| PyPDF2 | PDF text extraction |
+| LangChain | RAG and LLM orchestration |
+| FAISS | Vector similarity search |
+| Sentence Transformers | Local text embeddings |
+| Google Gemini | Answer generation |
+| python-dotenv | Environment variable management |
+| Git & GitHub | Version control and source code hosting |
+| Streamlit Community Cloud | Deployment |
+
+---
+
+## 🔄 Application Workflow
+
+(paste the ASCII diagram code block here)
 
 ```text
              PDF Files
                  │
                  ▼
         ┌─────────────────┐
-        │    PyPDF2       │
+        │     PyPDF2      │
         │ Text Extraction │
         └────────┬────────┘
                  │
                  ▼
         ┌─────────────────┐
-        │ Text Chunking   │
-        │ 1500 / 200      │
+        │  Text Chunking  │
+        │    1500 / 200   │
         └────────┬────────┘
                  │
                  ▼
         ┌────────────────────────────┐
-        │ Sentence Transformer       │
-        │ all-MiniLM-L6-v2           │
-        │ Local Embeddings           │
+        │    Sentence Transformer    │
+        │      all-MiniLM-L6-v2      │
+        │      Local Embeddings      │
         └────────────┬───────────────┘
                      │
                      ▼
-              ┌─────────────┐
-              │    FAISS    │
-              │ Vector Store│
-              └──────┬──────┘
+              ┌──────────────┐
+              │    FAISS     │
+              │ Vector Store │
+              └──────┬───────┘
                      │
               User Question
                      │
                      ▼
           ┌─────────────────────┐
-          │ Similarity Search   │
+          │  Similarity Search  │
           │ Relevant PDF Chunks │
           └──────────┬──────────┘
                      │
                      ▼
           ┌─────────────────────┐
-          │    Google Gemini   │
-          │   Answer Generation │
+          │    Google Gemini    │
+          │  Answer Generation  │
           └──────────┬──────────┘
                      │
                      ▼
                   Answer
 ```
+
+
+## 🏗️ System Architecture
+
+The architecture represents the complete flow from PDF upload to generated answer.
+
+![System Architecture](img/architecture.png)
+
 
 ---
 
@@ -144,23 +191,6 @@ when the requested information is not present in the retrieved context.
 
 ---
 
-## 🛠️ Technology Stack
-
-| Technology | Purpose |
-|---|---|
-| Python | Application development |
-| Streamlit | Web application interface |
-| PyPDF2 | PDF text extraction |
-| LangChain | RAG and LLM orchestration |
-| FAISS | Vector similarity search |
-| Sentence Transformers | Local text embeddings |
-| Google Gemini | Answer generation |
-| python-dotenv | Environment variable management |
-| Git & GitHub | Version control and source code hosting |
-| Streamlit Community Cloud | Deployment |
-
----
-
 ## 📂 Project Structure
 
 ```text
@@ -177,9 +207,7 @@ PDF-Insight-AI/
     └── architecture.png
 ```
 
-### Generated / Local Files
-
-The following are intentionally not committed to GitHub:
+**Generated / local files** (intentionally not committed to GitHub, excluded through `.gitignore`):
 
 ```text
 .env
@@ -189,54 +217,25 @@ faiss_index/
 .streamlit/secrets.toml
 ```
 
-These are excluded through `.gitignore`.
-
 ---
 
-## ⚙️ Requirements
+## ⚙️ Getting Started
+
+### Requirements
 
 - Python 3.x
 - A Google Gemini API key
 - Internet connection for Gemini API access
 - Required Python packages listed in `requirements.txt`
 
-### Python Environment
+**Tested Python versions:**
 
-The application has been tested locally with:
+| Environment | Version |
+|---|---|
+| Local | Python 3.14.3 |
+| Deployed (Streamlit Cloud) | Python 3.12.14 |
 
-```text
-Python 3.14.3
-```
-
-The deployed Streamlit application uses:
-
-```text
-Python 3.12.14
-```
-
----
-
-## 🔑 Environment Setup
-
-Create a `.env` file in the project root:
-
-```env
-GOOGLE_API_KEY=your_gemini_api_key
-```
-
-Do not commit `.env` to GitHub.
-
-For Streamlit Community Cloud, configure the API key through the app's **Secrets** settings:
-
-```toml
-GOOGLE_API_KEY = "your_gemini_api_key"
-```
-
-Never expose your actual API key in source code or public repositories.
-
----
-
-## 💻 Installation
+### Installation
 
 Clone the repository:
 
@@ -251,10 +250,14 @@ Create a virtual environment:
 python -m venv venv
 ```
 
-Activate it on Windows:
+Activate it:
 
 ```bash
+# Windows
 venv\Scripts\activate
+
+# macOS / Linux
+source venv/bin/activate
 ```
 
 Install dependencies:
@@ -263,9 +266,23 @@ Install dependencies:
 pip install -r requirements.txt
 ```
 
----
+### Environment Setup
 
-## ▶️ Run Locally
+Create a `.env` file in the project root:
+
+```env
+GOOGLE_API_KEY=your_gemini_api_key
+```
+
+For Streamlit Community Cloud, configure the API key through the app's **Secrets** settings instead:
+
+```toml
+GOOGLE_API_KEY = "your_gemini_api_key"
+```
+
+> ⚠️ Never commit `.env` to GitHub, and never expose your actual API key in source code or public repositories.
+
+### Run Locally
 
 Start the Streamlit application:
 
@@ -294,11 +311,9 @@ Then open the local Streamlit URL shown in the terminal.
 
 The application is deployed using **Streamlit Community Cloud**.
 
-Live application:
+Live application: https://pdfinsightapp.streamlit.app
 
-https://pdfinsightapp.streamlit.app
-
-For deployment:
+To deploy your own copy:
 
 1. Push the project to GitHub.
 2. Create a Streamlit Community Cloud application.
@@ -343,19 +358,9 @@ For deployment:
 
 ---
 
-## 📸 Architecture
-
-The project architecture diagram is available at:
-
-```text
-img/architecture.png
-```
-
----
-
 ## 📜 License
 
-This project is distributed under the license included in the `LICENSE` file.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ---
 
